@@ -17,7 +17,11 @@
  */
 function addRandomGreeting() {
   const greetings =
-      ['\"I have no idea what I\'m doing but I know I\'m doing it really, really well.\" - Andy Dwyer'];
+      ['I have no idea what I\'m doing but I know I\'m doing it really, really well. - Andy Dwyer',
+      'I\'m not great at the advice. Can I interest you in a sarcatic comment? - Chandeler Bing', 
+      'Bears. Beets. Battlestar Galactica - Jim Halpert',
+      'I can be flexible, as long as everything is exactly the way I want it. - Lorelai Gilmore'
+      ];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
