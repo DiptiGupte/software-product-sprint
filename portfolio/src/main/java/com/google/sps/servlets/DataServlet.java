@@ -29,12 +29,10 @@ public class DataServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
     response.getWriter().println("Hello Dipti!");
-  }**/
+  }
+  **/
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     ArrayList<String> arr = new ArrayList<String>();
-    arr.add("Hello");
-    arr.add("Hi");
-    arr.add("Hey");
 
     String json = convertToJson(arr);
 
@@ -42,17 +40,33 @@ public class DataServlet extends HttpServlet {
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
+
   private String convertToJson(ArrayList<String> a) {
     String json = "{";
-    json += "\"greeting1\": ";
-    json += "\"" + a.get(0) + "\"";
-    json += ", ";
-    json += "\"greeting2\": ";
-    json += "\"" + a.get(1) + "\"";
-    json += ", ";
-    json += "\"greeting3\": ";
-    json += "\"" + a.get(2) + "\"";
+    for(int i = 0; i < a.size(); i++)
+    {
+        json += "\"greeting\": ";
+        json += "\"" + a.get(i) + "\"";
+        json += " ";
+    }
     json += "}";
     return json;
+  }
+
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "text-input", "");
+
+    // Respond with the result.
+    response.setContentType("text/html;");
+    response.getWriter().println(text);
+  }
+
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
   }
 }
