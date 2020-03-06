@@ -28,3 +28,14 @@ img{
 .comment span {
   flex-grow: 1;
 }
+
+#text {
+        width: 500px;
+        height: 125px;
+      }
+
+#language {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}

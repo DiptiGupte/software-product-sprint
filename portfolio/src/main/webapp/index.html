@@ -43,15 +43,25 @@
         <button onclick="addRandomGreeting()">Fetch a quote!</button>
         <div id="greeting-container"></div>
  
+        <p>Leave a comment here and select a language, then click submit to translate it:</p>
         <form method="POST" action="/data">
             <input type="text" name="title" />
+            <select id="language">
+                <option value="en">English</option>
+                <option value="zh">Chinese</option>
+                <option value="es">Spanish</option>
+                <option value="hi">Hindi</option>
+                <option value="ar">Arabic</option>
+            </select>
             <br/>
-            <button>Submit</button>
+            <button onclick="requestTranslation();">Submit</button>
         </form>
 
         <hr/>
-
-        <ul id="comment-list"></ul>
+            <div id="result"></div>
+            <ul id="comment-list"></ul>
+            
+        <hr/>
     </div>
   </body>
 </html>
