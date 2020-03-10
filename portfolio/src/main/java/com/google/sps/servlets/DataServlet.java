@@ -33,23 +33,20 @@ public class DataServlet extends HttpServlet {
   **/
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     ArrayList<String> arr = new ArrayList<String>();
+    arr.add("Hello");
+    arr.add("Hi");
+    arr.add("Hey");
 
-    String json = convertToJson(arr);
+    String json = convertToJsonUsingGson(arr);
 
     // Send the JSON as the response
     response.setContentType("application/json;");
     response.getWriter().println(json);
   }
 
-  private String convertToJson(ArrayList<String> a) {
-    String json = "{";
-    for(int i = 0; i < a.size(); i++)
-    {
-        json += "\"greeting\": ";
-        json += "\"" + a.get(i) + "\"";
-        json += " ";
-    }
-    json += "}";
+  private String convertToJsonUsingGson(ArrayList<String> a) {
+    Gson gson = new Gson();
+    String json = gson.toJson(a);
     return json;
   }
 
