@@ -43,25 +43,38 @@
         <button onclick="addRandomGreeting()">Fetch a quote!</button>
         <div id="greeting-container"></div>
  
-        <p>Leave a comment here and select a language, then click submit to translate it:</p>
         <form method="POST" action="/data">
+            <p>Type a comment here: </p>
             <input type="text" name="title" />
-            <select id="language">
+            <p>And type the two-letter language code to translate!</p>
+            <ul>
+                <li>en : English</li>
+                <li>zh : Chinese</li>
+                <li>es : Spanish</li>
+                <li>hi : Hindi</li>
+                <li>ar : Arabic</li>
+                <li><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">Here</a> are more language codes to chose from!</li>
+            </ul> 
+            <input type="text" name="languageCode" />
+            <!--
+            <select id="languageCode">
                 <option value="en">English</option>
                 <option value="zh">Chinese</option>
                 <option value="es">Spanish</option>
                 <option value="hi">Hindi</option>
                 <option value="ar">Arabic</option>
             </select>
+            -->
             <br/>
             <button onclick="requestTranslation();">Submit</button>
-        </form>
-
-        <hr/>
+             <hr/>
             <div id="result"></div>
             <ul id="comment-list"></ul>
             
         <hr/>
+        </form>
+
+       
     </div>
   </body>
 </html>

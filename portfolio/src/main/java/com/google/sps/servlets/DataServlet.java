@@ -72,8 +72,9 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String title = request.getParameter("title");
     long timestamp = System.currentTimeMillis();
-    //String languageCode = request.getParameter("languageCode");
-    String languageCode = "es";
+    String languageCode = request.getParameter("languageCode");
+    //String languageCode = "es";
+    System.out.println("doPost");
     System.out.println(title);
     System.out.println(languageCode);
 
