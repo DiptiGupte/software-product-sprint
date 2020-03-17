@@ -18,13 +18,13 @@
         <img src= "/images/IMG_2904.JPG" class="rotateimg90">
 
         <h2>Technical Projects</h2>
-        <p>Adelante​</p>
+        <h4>Adelante​</h4>
         <p>This is a website I created with some of my friends. We wanted to make a centralized resource for first generation college bound students that helps them with the college application process.</p>
         <img src= "/images/adelante1.png">
         <img src= "/images/adelante3.png">
         <img src= "/images/adelante2.png">
 
-        <p>Tacological​</p>
+        <h4>Tacological​</h4>
         <p>This is a virtual reality game I created with a group of 3 other students for quarter long class project that teaches players about food sustainability.</p>
         <img src= "/images/taco1.png">
         <img src= "/images/taco2.png">
@@ -47,25 +47,14 @@
         <form method="POST" action="/data">
             <p>Type a comment here: </p>
             <input type="text" name="title" />
-            <p>And type the two-letter language code to translate!</p>
-            <ul>
-                <li>en : English</li>
-                <li>zh : Chinese</li>
-                <li>es : Spanish</li>
-                <li>hi : Hindi</li>
-                <li>ar : Arabic</li>
-                <li><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes" target="_blank">Here</a> are more language codes to chose from!</li>
-            </ul> 
-            <input type="text" name="languageCode" />
-            <!--
-            <select id="languageCode">
+            <p>And select a language to translate!</p>
+            <select name="languageCode">
                 <option value="en">English</option>
                 <option value="zh">Chinese</option>
                 <option value="es">Spanish</option>
                 <option value="hi">Hindi</option>
                 <option value="ar">Arabic</option>
             </select>
-            -->
             <br/>
             <button onclick="requestTranslation();">Submit</button>
              <hr/>
