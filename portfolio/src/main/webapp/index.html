@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body onload="loadComments()">
+  <body onload="loadComments();createMap();">
     <div id="content">
         <h1>Dipti's Portfolio</h1>
         <p>Hi! My name is Dipti and I'm a junior at Santa Clara University majoring in Computer Science and minoring in Digital Art. In general, I like to combine my two passions to create new things with good people. This can range from Virtual Reality games through research to web design with my friends. In my free time, I enjoy spending time with family and friends and watching YouTube and Netflix. </p>
@@ -59,11 +59,14 @@
             <button onclick="requestTranslation();">Submit</button>
              <hr/>
             <div id="result"></div>
-            <ul id="comment-list"></ul>
-            
+            <ul id="comment-list"></ul>  
         <hr/>
         </form>
 
+        <h1>Hello Google Maps</h1>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-c4RraXjaxGT6bNCkrev-ZIj-7Jbc6w0"></script>
+        <div id="map"></div>
+        <p>This page shows a Google Map!</p>
        
     </div>
   </body>
