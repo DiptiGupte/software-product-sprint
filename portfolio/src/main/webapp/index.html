@@ -6,42 +6,74 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="loadComments();createMap();">
     <div id="content">
         <h1>Dipti's Portfolio</h1>
         <p>Hi! My name is Dipti and I'm a junior at Santa Clara University majoring in Computer Science and minoring in Digital Art. In general, I like to combine my two passions to create new things with good people. This can range from Virtual Reality games through research to web design with my friends. In my free time, I enjoy spending time with family and friends and watching YouTube and Netflix. </p>
-        <img src= "/images/IMG_0567.JPG" width = "200" height="250">
-        <img src= "/images/IMG_2904.JPG" width = "200" height="250">
-        <img src= "/images/IMG_4060.JPG" width = "200" height="250">
-        <img src= "/images/IMG_9270.JPG" width = "200" height="250">
-        <img src= "/images/IMG_9707.JPG" width = "200" height="250">
+        <img src= "/images/IMG_0567.JPG">
+        <img src= "/images/IMG_9270.JPG">
+        <img src= "/images/IMG_4060.JPG">
+        <img src= "/images/IMG_9707.JPG">
+        <img src= "/images/IMG_1381.jpg">
+        <img src= "/images/IMG_2904.JPG" class="rotateimg90">
 
         <h2>Technical Projects</h2>
-        <p>Adelante​</p>
+        <h4>Adelante​</h4>
         <p>This is a website I created with some of my friends. We wanted to make a centralized resource for first generation college bound students that helps them with the college application process.</p>
-        <img src= "/images/adelante1.png" width = "200" height="250">
-        <img src= "/images/adelante3.png" width = "200" height="250">
-        <img src= "/images/adelante2.png" width = "200" height="250">
+        <img src= "/images/adelante1.png">
+        <img src= "/images/adelante3.png">
+        <img src= "/images/adelante2.png">
 
-        <p>Tacological​</p>
+        <h4>Tacological​</h4>
         <p>This is a virtual reality game I created with a group of 3 other students for quarter long class project that teaches players about food sustainability.</p>
-        <img src= "/images/taco1.png" width = "200" height="250">
-        <img src= "/images/taco2.png" width = "200" height="250">
-        <img src= "/images/taco3.png" width = "200" height="250">
+        <img src= "/images/taco1.png">
+        <img src= "/images/taco2.png">
+        <img src= "/images/taco3.png">
 
         <h2>Digital Art Projects</h2>
         <p>I have recently started learning more about Illustrator and Photoshop. These projects vary from photo manipulation or digital painting in Photoshop to vector illustration or logo design in Illustrator.</p>
-        <img src= "/images/da1.png" width = "200" height="250">
-        <img src= "/images/da2.jpg" width = "200" height="250">
-        <img src= "/images/da3.jpg" width = "200" height="250">
-        <img src= "/images/da4.png" width = "200" height="250">
-        <img src= "/images/da5.png" width = "250" height="200">
-        <img src= "/images/da6.png" width = "250" height="200">
-        <img src= "/images/da7.png" width = "200" height="250">
+        <img src= "/images/da1.png">
+        <img src= "/images/da2.jpg">
+        <img src= "/images/da3.jpg">
+        <img src= "/images/da4.png">
+        <img src= "/images/da5.png">
+        <img src= "/images/da6.png">
+        <img src= "/images/da7.png">
 
         <p>Click here to get a random message:</p>
-        <button onclick="addRandomGreeting()">Hello</button>
+        <button class="button", onclick="addRandomGreeting()">Fetch a quote!</button>
         <div id="greeting-container"></div>
+ 
+        <p>Drop the markers to see some of my favorite places!</p>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-c4RraXjaxGT6bNCkrev-ZIj-7Jbc6w0"></script>
+        <div id="map"></div> 
+        <button id="drop" class="button", onclick="drop()">Drop Markers</button>
+
+        <form method="POST" action="/data">
+            <p>Type a comment here: </p>
+            <input type="text" name="title" />
+            <p>And select a language to translate!</p>
+            <div class="dropdown">
+            <select class="dropbtn", name="languageCode">
+                <div class="dropdown-content">
+                <option value="en">English</option>
+                <option value="zh">Chinese</option>
+                <option value="es">Spanish</option>
+                <option value="hi">Hindi</option>
+                <option value="ar">Arabic</option>
+                </div>
+            </select>
+            </div>
+            <br/>
+
+            <br/>
+            <button class="button", onclick="requestTranslation();">Submit</button>
+             <hr/>
+            <div id="result"></div>
+            <ul id="comment-list"></ul>  
+        <hr/>
+        </form>
+         
     </div>
   </body>
 </html>
