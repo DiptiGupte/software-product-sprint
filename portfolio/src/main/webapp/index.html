@@ -41,32 +41,39 @@
         <img src= "/images/da7.png">
 
         <p>Click here to get a random message:</p>
-        <button onclick="addRandomGreeting()">Fetch a quote!</button>
+        <button class="button", onclick="addRandomGreeting()">Fetch a quote!</button>
         <div id="greeting-container"></div>
  
+        <p>Drop the markers to see some of my favorite places!</p>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-c4RraXjaxGT6bNCkrev-ZIj-7Jbc6w0"></script>
+        <div id="map"></div> 
+        <button id="drop" class="button", onclick="drop()">Drop Markers</button>
+
         <form method="POST" action="/data">
             <p>Type a comment here: </p>
             <input type="text" name="title" />
             <p>And select a language to translate!</p>
-            <select name="languageCode">
+            <div class="dropdown">
+            <select class="dropbtn", name="languageCode">
+                <div class="dropdown-content">
                 <option value="en">English</option>
                 <option value="zh">Chinese</option>
                 <option value="es">Spanish</option>
                 <option value="hi">Hindi</option>
                 <option value="ar">Arabic</option>
+                </div>
             </select>
+            </div>
             <br/>
-            <button onclick="requestTranslation();">Submit</button>
+
+            <br/>
+            <button class="button", onclick="requestTranslation();">Submit</button>
              <hr/>
             <div id="result"></div>
             <ul id="comment-list"></ul>  
         <hr/>
         </form>
-
-        <p>This page shows a Google Map!</p>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-c4RraXjaxGT6bNCkrev-ZIj-7Jbc6w0"></script>
-        <button id="drop" onclick="drop()">Drop Markers</button>
-        <div id="map"></div>  
+         
     </div>
   </body>
 </html>

@@ -88,16 +88,25 @@ function requestTranslation() {
 
 var scu = {lat: 37.3496, lng: -121.9390};
 var cv = {lat: 37.6955, lng: -122.0739};
-var ind = {lat: 19.218330, lng: 72.978088};
-var favPlaces = [ scu, cv, ind];
+var dis = {lat: 33.812511, lng: -117.918976};
+var ghi = {lat: 37.8059, lng: -122.4226};
+var favPlaces = [scu, cv, dis, ghi];
+var titles = ["Santa Clara Univerity", "Castro Valley", "Disneyland", "Ghiradelli Square"];
 var markers = [];
+var contents = [
+    "I am currently in my third year at Santa Clara University. One of my favorite things to do here is taking long walks around campus with my friends.", 
+    "My hometown is Castro Valley.", 
+    "One of my fondest memories is going to Disneyland with my best friend as a high school graduation celebration.",
+    "My family has a tradition of going ice skating and then going to Ghiradelli Square for ice cream after every December."
+]
+var infoWindows = [];
 var map;
 
 function createMap() {
     map = new google.maps.Map(
       document.getElementById('map'), {
-        center: scu, 
-        zoom: 10,
+        center: {lat: 35.7540055, lng: -119.996438}, 
+        zoom: 6,
         styles: [
         {
             "elementType": "geometry",
@@ -333,22 +342,27 @@ function createMap() {
         ]    
     });
 }
-    
+
 function drop() {
     clearMarkers();
     for (var i = 0; i < favPlaces.length; i++) {
-        addMarkerWithTimeout(favPlaces[i], i * 200);
+        addMarkerWithTimeout(favPlaces[i], titles[i], contents[i], i, i * 200);
     }
 }
 
-function addMarkerWithTimeout(position, timeout) {
+function addMarkerWithTimeout(position, title, content, index, timeout) {
     window.setTimeout(function() {
         markers.push(new google.maps.Marker({
         position: position,
         map: map,
         animation: google.maps.Animation.DROP,
         icon:{url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"},
+        title: title
         }));
+        infoWindows.push(new google.maps.InfoWindow({content: content}));
+        markers[index].addListener('click', () => {
+            infoWindows[index].open(map, markers[index]);
+        });
     }, timeout);
 }
 
