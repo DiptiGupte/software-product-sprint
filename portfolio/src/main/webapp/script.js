@@ -30,41 +30,38 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
-/*
+
 function getNameUsingArrowFunctions() {
   fetch('/data').then(response => response.text()).then((name) => {
     document.getElementById('name-container').innerText = name;
   });
 }
-*/
+
 function getJsonGreetings() {
-  fetch('/data').then(response => response.json()).then((stats) => {
-    // stats is an object, not a string, so we have to
-    // reference its fields to create HTML content
-
-    const statsListElement = document.getElementById('array-container');
-    statsListElement.innerHTML = '';
-    statsListElement.appendChild(
-        createListElement('Greeting 1: ' + stats.greeting1));
-    statsListElement.appendChild(
-        createListElement('Greeting 2: ' + stats.greeting2));
-    statsListElement.appendChild(
-        createListElement('Greeting 3: ' + stats.greeting3));
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentsListElement = document.getElementById('array-container');
+    comments.forEach((comments) => {
+      commentsListElement.appendChild(createTaskElement(comments));
+    })
   });
 }
 
-function createListElement(text) {
-  const liElement = document.createElement('li');
-  liElement.innerText = text;
-  return liElement;
+function loadComments() {
+  fetch('/data').then(response => response.json()).then((comments) => {
+    const commentListElement = document.getElementById('comment-list');
+    comments.forEach((comment) => {
+      commentListElement.appendChild(createCommentElement(comment));
+    })
+  });
 }
 
-function getComments() {
-  fetch('/data').then(response => response.json()).then((comment) => {
-    // Build the list of history entries.
-    const historyEl = document.getElementById('history');
-    comment.history.forEach((line) => {
-      historyEl.appendChild(createListElement(line));
-    });
-  });
+function createCommentElement(comment) {
+  const commentElement = document.createElement('li');
+  commentElement.className = 'comment';
+
+  const titleElement = document.createElement('span');
+  titleElement.innerText = comment;
+
+  commentElement.appendChild(titleElement);
+  return commentElement;
 }
