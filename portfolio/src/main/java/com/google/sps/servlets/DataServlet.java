@@ -19,14 +19,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-
   @Override
+  /**
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
     response.getWriter().println("Hello Dipti!");
+  }**/
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    ArrayList<String> arr = new ArrayList<String>();
+    arr.add("Hello");
+    arr.add("Hi");
+    arr.add("Hey");
+
+    String json = convertToJson(arr);
+
+    // Send the JSON as the response
+    response.setContentType("application/json;");
+    response.getWriter().println(json);
+  }
+  private String convertToJson(ArrayList<String> a) {
+    String json = "{";
+    json += "\"greeting1\": ";
+    json += "\"" + a.get(0) + "\"";
+    json += ", ";
+    json += "\"greeting2\": ";
+    json += "\"" + a.get(1) + "\"";
+    json += ", ";
+    json += "\"greeting3\": ";
+    json += "\"" + a.get(2) + "\"";
+    json += "}";
+    return json;
   }
 }

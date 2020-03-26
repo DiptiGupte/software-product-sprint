@@ -30,9 +30,31 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
-
+/*
 function getNameUsingArrowFunctions() {
   fetch('/data').then(response => response.text()).then((name) => {
     document.getElementById('name-container').innerText = name;
   });
+}
+*/
+function getJsonGreetings() {
+  fetch('/data').then(response => response.json()).then((stats) => {
+    // stats is an object, not a string, so we have to
+    // reference its fields to create HTML content
+
+    const statsListElement = document.getElementById('array-container');
+    statsListElement.innerHTML = '';
+    statsListElement.appendChild(
+        createListElement('Greeting 1: ' + stats.greeting1));
+    statsListElement.appendChild(
+        createListElement('Greeting 2: ' + stats.greeting2));
+    statsListElement.appendChild(
+        createListElement('Greeting 3: ' + stats.greeting3));
+  });
+}
+
+function createListElement(text) {
+  const liElement = document.createElement('li');
+  liElement.innerText = text;
+  return liElement;
 }
