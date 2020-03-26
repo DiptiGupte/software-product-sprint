@@ -58,3 +58,13 @@ function createListElement(text) {
   liElement.innerText = text;
   return liElement;
 }
+
+function getComments() {
+  fetch('/data').then(response => response.json()).then((comment) => {
+    // Build the list of history entries.
+    const historyEl = document.getElementById('history');
+    comment.history.forEach((line) => {
+      historyEl.appendChild(createListElement(line));
+    });
+  });
+}
