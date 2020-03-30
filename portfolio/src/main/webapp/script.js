@@ -356,7 +356,7 @@ function addMarkerWithTimeout(position, title, content, index, timeout) {
         position: position,
         map: map,
         animation: google.maps.Animation.DROP,
-        icon:{url: "http://maps.google.com/mapfiles/ms/icons/green-dot.png"},
+        icon:{url: "http://labs.google.com/ridefinder/images/mm_20_white.png"},
         title: title
         }));
         infoWindows.push(new google.maps.InfoWindow({content: content}));
