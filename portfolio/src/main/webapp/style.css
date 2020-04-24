@@ -1,7 +1,12 @@
+body {
+  background-color: lightblue;
+}
+
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
+  /*width: 650px;*/
+  width: 50%;
 }
 
 #greeting-container {
@@ -9,8 +14,17 @@
 }
 
 img{
-    max-width: 100%;
-    height: auto;
+    width:225px;
+    height:225px;
+    object-fit:scale-down;
+}
+
+.rotateimg90 {
+  -webkit-transform:rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
 }
 
 #comment-list {
@@ -27,4 +41,15 @@ img{
 
 .comment span {
   flex-grow: 1;
+}
+
+#text {
+        width: 500px;
+        height: 125px;
+      }
+
+#language {
+    display: block;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
